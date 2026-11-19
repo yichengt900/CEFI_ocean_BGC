@@ -300,6 +300,7 @@ contains
     !! Add all the parameters to be used in this module.
 
     type(param_file_type), intent(in)   :: param_file  !! structure indicating parameter file to parse
+    logical :: test_answer_report_option !! test only: a new default-off parameter, not used
 
     !Specify all parameters used in this modules.
     !===============================@===============================
@@ -318,6 +319,8 @@ contains
 
     call g_tracer_start_param_list(package_name)
     call get_param(param_file, "generic_COBALT", "init", cobalt%init, "init", default=.false.)
+    call get_param(param_file, "generic_COBALT", "test_answer_report_option", test_answer_report_option, &
+                   "Test only: a new default-off parameter", default=.false.)
 
     call get_param(param_file, "generic_COBALT", "htotal_in", cobalt%htotal_in, "htotal_in", units="", default=1.0e-08)
     !
